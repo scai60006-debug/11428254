@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數據模擬</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; max-width: 800px; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        pre { background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>數據模擬</h1>
+    <p>我使用 C 語言實作了這五種排序演算法，並測量了它們在不同數據規模下的執行時間。程式生成隨機數組，對於每個規模 n（1000、5000、10000），分別運行每種排序演算法，並記錄執行時間。為了公平比較，每次排序前都會複製原始數組。</p>
+    <p>程式碼包含了所有五種排序函數的實作，以及時間測量函數。使用 clock() 函數來測量 CPU 時間。</p>
+
+    <h2>實驗結果（時間單位：秒）</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>n</th>
+                <th>冒泡排序</th>
+                <th>插入排序</th>
+                <th>選擇排序</th>
+                <th>快速排序</th>
+                <th>合併排序</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1000</td>
+                <td>0.002000</td>
+                <td>0.000000</td>
+                <td>0.001000</td>
+                <td>0.000000</td>
+                <td>0.000000</td>
+            </tr>
+            <tr>
+                <td>5000</td>
+                <td>0.049000</td>
+                <td>0.013000</td>
+                <td>0.024000</td>
+                <td>0.000000</td>
+                <td>0.001000</td>
+            </tr>
+            <tr>
+                <td>10000</td>
+                <td>0.225000</td>
+                <td>0.052000</td>
+                <td>0.092000</td>
+                <td>0.001000</td>
+                <td>0.001000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>從結果可以看出：</p>
+    <ul>
+        <li>快速排序和合併排序在所有測試規模下表現最佳，時間幾乎為 0（在測量精度內）。</li>
+        <li>插入排序在小規模數據下表現良好，但隨數據規模增加，時間顯著增加。</li>
+        <li>冒泡排序在所有規模下都是最慢的，特別是在大規模數據下。</li>
+        <li>選擇排序的表現介於插入排序和冒泡排序之間。</li>
+    </ul>
+    <p>效能差異主要來自於演算法的時間複雜度：O(n²) 的演算法（如冒泡、插入、選擇）在數據規模增大時，時間增長迅速；而 O(n log n) 的演算法（如快速、合併）增長較慢。</p>
+
+    <p><a href="index.html">返回首頁</a></p>
+</body>
+</html>
